@@ -13,6 +13,7 @@ const slice = createSlice({
             id: nanoid(),
             text,
             complited: false,
+            isEdit: false,
           },
         };
       },
@@ -21,12 +22,21 @@ const slice = createSlice({
       },
     },
     deleteTodo: (state, action) => {
-      const index = state.todos.findIndex(item => item.id === action.payload.id);
+      const index = state.todos.findIndex(item => item.id === action.payload);
       state.todos.splice(index, 1);
     },
     toggleTodoComplited: (state, action) => {
-      const toggleTodo = state.todos.find(item => item.id === action.payload.id);
-      toggleTodo.complited = !toggleTodo.complited;
+      const todo = state.todos.find(item => item.id === action.payload);
+      todo.complited = !todo.complited;
+    },
+    toggleIsEdit: (state, action) => {
+      const todo = state.todos.find(item => item.id === action.payload);
+      todo.isEdit = !todo.isEdit;
+    },
+    editTodo: (state, action) => {
+      const todo = state.todos.find(item => item.id === action.payload.id);
+      // todo.text = action.payload.text;
+      todo.isEdit = !todo.isEdit;
     },
   },
   selectors: {
@@ -35,5 +45,5 @@ const slice = createSlice({
 });
 
 export const todoReducer = slice.reducer;
-export const { addTodo, deleteTodo, toggleTodoComplited } = slice.actions;
+export const { addTodo, deleteTodo, toggleTodoComplited, toggleIsEdit, editTodo } = slice.actions;
 export const { selectTodos } = slice.selectors;
