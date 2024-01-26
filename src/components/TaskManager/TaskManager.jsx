@@ -1,5 +1,5 @@
 import { AddTodoForm } from '../AddTodoForm/AddTodoForm';
-import { TodoList } from '../TodoList/TodoList';
+import { TodoList } from '../TodoList/Todolist';
 
 export const TaskManager = () => {
   return (
