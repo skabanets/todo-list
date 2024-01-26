@@ -4,7 +4,6 @@ import { TodoListItem } from '../TodoListItem/TodoListItem.JSX';
 
 export const TodoListItems = () => {
   const todos = useSelector(selectTodos);
-  console.log(todos);
 
   return (
     <ul>

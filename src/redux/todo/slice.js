@@ -35,7 +35,7 @@ const slice = createSlice({
     },
     editTodo: (state, action) => {
       const todo = state.todos.find(item => item.id === action.payload.id);
-      // todo.text = action.payload.text;
+      todo.text = action.payload.textTodo;
       todo.isEdit = !todo.isEdit;
     },
   },
