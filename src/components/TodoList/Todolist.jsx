@@ -1,11 +1,15 @@
-import { AddTodoForm } from '../AddTodoForm/AddTodoForm';
-import { TodoListItems } from '../TodoListItems/TodoListItems';
+import { useSelector } from 'react-redux';
+import { selectTodos } from '../../redux/todo/slice';
+import { TodoListItem } from '../TodoListItem/TodoListItem';
 
-export const Todolist = () => {
+export const TodoList = () => {
+  const todos = useSelector(selectTodos);
+
   return (
-    <div>
-      <AddTodoForm />
-      <TodoListItems />
-    </div>
+    <ul>
+      {todos.map(todo => (
+        <TodoListItem key={todo.id} {...todo} />
+      ))}
+    </ul>
   );
 };
