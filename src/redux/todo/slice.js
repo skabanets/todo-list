@@ -4,7 +4,7 @@ const slice = createSlice({
   name: 'todos',
   initialState: {
     todos: [],
-    filter: 'all',
+    filter: 'All',
   },
   reducers: {
     addTodo: {

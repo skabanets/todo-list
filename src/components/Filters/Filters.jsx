@@ -6,13 +6,13 @@ export const Filters = () => {
 
   return (
     <div>
-      <button type="button" onClick={() => dispatch(changeFilter('all'))}>
+      <button type="button" onClick={() => dispatch(changeFilter('All'))}>
         All
       </button>
-      <button type="button" onClick={() => dispatch(changeFilter('active'))}>
+      <button type="button" onClick={() => dispatch(changeFilter('Active'))}>
         Active
       </button>
-      <button type="button" onClick={() => dispatch(changeFilter('complited'))}>
+      <button type="button" onClick={() => dispatch(changeFilter('Complited'))}>
         Completed
       </button>
     </div>

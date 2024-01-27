@@ -8,9 +8,9 @@ export const TodoList = () => {
 
   const getFilteredTodos = (todos, filter) => {
     switch (filter) {
-      case 'active':
+      case 'Active':
         return todos.filter(item => item.complited === false);
-      case 'complited':
+      case 'Complited':
         return todos.filter(item => item.complited === true);
       default:
         return todos;
@@ -19,11 +19,19 @@ export const TodoList = () => {
 
   const filteredTodos = getFilteredTodos(todos, filter);
 
+  console.log(filter);
   return (
-    <ul>
-      {filteredTodos.map(todo => (
-        <TodoListItem key={todo.id} {...todo} />
-      ))}
-    </ul>
+    <>
+      <h2>{`${filter} tasks:`}</h2>
+      {filteredTodos.length ? (
+        <ul>
+          {filteredTodos.map(todo => (
+            <TodoListItem key={todo.id} {...todo} />
+          ))}
+        </ul>
+      ) : (
+        <p>{`List ${filter.toLowerCase()} tasks is empty!`}</p>
+      )}
+    </>
   );
 };
