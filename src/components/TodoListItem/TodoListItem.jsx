@@ -1,8 +1,16 @@
-import { useDispatch } from 'react-redux';
-import { deleteTodo, editTodo, toggleIsEdit, toggleTodoComplited } from '../../redux/todo/slice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  deleteTodo,
+  editTodo,
+  selectTodos,
+  toggleIsEdit,
+  toggleTodoComplited,
+} from '../../redux/todo/slice';
 import { useState } from 'react';
+import { findTodo } from '../../helpers/findTodo';
 
 export const TodoListItem = ({ id, text, complited, isEdit }) => {
+  const todos = useSelector(selectTodos);
   const [textTodo, setTextTodo] = useState();
   const dispatch = useDispatch();
 
@@ -16,6 +24,7 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
   };
 
   const handleAceptEdit = () => {
+    if (findTodo(textTodo, todos)) return;
     dispatch(editTodo({ id, textTodo }));
   };
 
@@ -39,7 +48,7 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
       ) : (
         <div>
           <input type="text" value={textTodo} onChange={handleChangeTodoText} />
-          <button type="button" onClick={() => handleAceptEdit()}>
+          <button type="button" onClick={handleAceptEdit}>
             OK
           </button>
           <button type="button" onClick={() => dispatch(toggleIsEdit(id))}>

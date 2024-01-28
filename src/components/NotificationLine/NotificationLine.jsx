@@ -9,12 +9,8 @@ export const NotificationLine = () => {
 
   return (
     <div>
-      {!todos.length && <h2>Your task list is empty, create a new task!</h2>}
-      {todos.length && activeTodos ? (
-        <h2>{`Your active tasks - ${activeTodos} `}</h2>
-      ) : (
-        <h2>All tasks completed!</h2>
-      )}
+      {todos.length !== 0 && activeTodos !== 0 && <h2>{`Your active tasks (${activeTodos}) `}</h2>}
+      {todos.length !== 0 && activeTodos === 0 && <h2>All tasks completed!</h2>}
     </div>
   );
 };
