@@ -14,7 +14,7 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
   const [textTodo, setTextTodo] = useState();
   const dispatch = useDispatch();
 
-  const editTodoText = text => {
+  const editTodoText = (text, id) => {
     setTextTodo(text);
     dispatch(toggleIsEdit(id));
   };
@@ -38,7 +38,7 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
             onChange={() => dispatch(toggleTodoComplited(id))}
           />
           <p>{text}</p>
-          <button type="button" onClick={() => editTodoText(text)}>
+          <button type="button" onClick={() => editTodoText(text, id)}>
             Edit
           </button>
           <button type="button" onClick={() => dispatch(deleteTodo(id))}>
@@ -49,10 +49,7 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
         <div>
           <input type="text" value={textTodo} onChange={handleChangeTodoText} />
           <button type="button" onClick={handleAceptEdit}>
-            OK
-          </button>
-          <button type="button" onClick={() => dispatch(toggleIsEdit(id))}>
-            X
+            Accept
           </button>
         </div>
       )}

@@ -32,12 +32,16 @@ const slice = createSlice({
     },
     toggleIsEdit: (state, action) => {
       const todo = state.todos.find(item => item.id === action.payload);
+      if (state.todos.some(item => item.isEdit)) {
+        const editingTodo = state.todos.find(item => item.isEdit);
+        editingTodo.isEdit = false;
+      }
       todo.isEdit = !todo.isEdit;
     },
     editTodo: (state, action) => {
       const todo = state.todos.find(item => item.id === action.payload.id);
       todo.text = action.payload.textTodo;
-      todo.isEdit = !todo.isEdit;
+      todo.isEdit = false;
     },
     changeFilter: (state, action) => {
       state.filter = action.payload;
