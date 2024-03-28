@@ -5,7 +5,6 @@ import { selectTodos } from '../../redux/todo/slice';
 export const NotificationLine = () => {
   const todos = useSelector(selectTodos);
   const activeTodos = todos.reduce((total, item) => (!item.complited ? (total += 1) : total), 0);
-  console.log(activeTodos);
 
   return (
     <div>
