@@ -19,7 +19,7 @@ export const TodoList = () => {
           ))}
         </ul>
       ) : (
-        <p>{`List ${filter.toLowerCase()} tasks is empty!`}</p>
+        <p className="flex justify-center my-5 text-red-500 text-xl">{`List ${filter.toLowerCase()} tasks is empty!`}</p>
       )}
     </>
   );

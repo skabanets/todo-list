@@ -18,7 +18,9 @@ export const TaskManager = () => {
           <TodoList />
         </div>
       ) : (
-        <h2>Your task list is empty, create a new task!</h2>
+        <h2 className="flex justify-center my-5 text-red-500 text-xl">
+          Your task list is empty, create a new task!
+        </h2>
       )}
     </div>
   );
