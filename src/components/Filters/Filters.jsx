@@ -1,18 +1,34 @@
-import { useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/todo/slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFilter, selectFilter } from '../../redux/todo/slice';
 
 export const Filters = () => {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
+
+  const btnFilter =
+    'border-2 border-black px-4 py-2 rounded-md text-lg hover:text-white hover:bg-orange-400 w-[120px]';
 
   return (
-    <div>
-      <button type="button" onClick={() => dispatch(changeFilter('All'))}>
+    <div className="flex justify-center gap-2 my-5">
+      <button
+        className={`${btnFilter} ${filter === 'All' ? 'bg-yellow-300' : ''}`}
+        type="button"
+        onClick={() => dispatch(changeFilter('All'))}
+      >
         All
       </button>
-      <button type="button" onClick={() => dispatch(changeFilter('Active'))}>
+      <button
+        className={`${btnFilter} ${filter === 'Active' ? 'bg-yellow-300' : ''}`}
+        type="button"
+        onClick={() => dispatch(changeFilter('Active'))}
+      >
         Active
       </button>
-      <button type="button" onClick={() => dispatch(changeFilter('Complited'))}>
+      <button
+        className={`${btnFilter} ${filter === 'Completed' ? 'bg-yellow-300' : ''}`}
+        type="button"
+        onClick={() => dispatch(changeFilter('Completed'))}
+      >
         Completed
       </button>
     </div>

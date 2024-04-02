@@ -11,9 +11,9 @@ export const TodoList = () => {
 
   return (
     <>
-      <h2>{`${filter} tasks:`}</h2>
+      <h2 className="flex justify-center text-xl">{`${filter} tasks:`}</h2>
       {filteredTodos.length ? (
-        <ul>
+        <ul className="flex flex-wrap w-[900px] gap-5 justify-center mx-auto my-5">
           {filteredTodos.map(todo => (
             <TodoListItem key={todo.id} {...todo} />
           ))}
