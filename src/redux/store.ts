@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { todoReducer } from './todo/slice';
+import { todoReducer } from './todo/todoSlice';
 import {
   persistStore,
   persistReducer,
@@ -33,3 +33,5 @@ export const store = configureStore({
 });
 
 export let persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;

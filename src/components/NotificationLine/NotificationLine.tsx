@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectTodos } from '../../redux/todo/slice';
+import { selectTodos } from '../../redux/todo/todoSlice';
 
 export const NotificationLine = () => {
   const todos = useSelector(selectTodos);

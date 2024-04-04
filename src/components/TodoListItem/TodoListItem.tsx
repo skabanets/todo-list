@@ -1,3 +1,4 @@
+import React, { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteTodo,
@@ -5,23 +6,26 @@ import {
   selectTodos,
   toggleIsEdit,
   toggleTodoComplited,
-} from '../../redux/todo/slice';
+} from '../../redux/todo/todoSlice';
 import { useState } from 'react';
 import { findTodo } from '../../helpers/findTodo';
 import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
+import { Todo } from '../../types';
 
-export const TodoListItem = ({ id, text, complited, isEdit }) => {
+export const TodoListItem = (todo: Todo) => {
+  const { id, text, complited, isEdit } = todo;
+
   const todos = useSelector(selectTodos);
-  const [textTodo, setTextTodo] = useState();
+  const [textTodo, setTextTodo] = useState<string>('');
   const dispatch = useDispatch();
 
-  const editTodoText = (text, id) => {
+  const editTodoText = (text: string, id: string) => {
     setTextTodo(text);
     dispatch(toggleIsEdit(id));
   };
 
-  const handleChangeTodoText = e => {
+  const handleChangeTodoText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTextTodo(e.target.value);
   };
 
@@ -33,7 +37,7 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
       return;
     }
 
-    dispatch(editTodo({ id, textTodo }));
+    dispatch(editTodo({ id, text: textTodo }));
   };
 
   return (
@@ -61,7 +65,6 @@ export const TodoListItem = ({ id, text, complited, isEdit }) => {
         <div className="flex flex-col justify-center items-center gap-2">
           <textarea
             className="resize-none rounded-md p-2.5 h-[60px] w-[240px] overflow-y-auto"
-            type="text"
             value={textTodo}
             onChange={handleChangeTodoText}
           />

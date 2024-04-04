@@ -1,5 +1,6 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilter, selectTodos } from '../../redux/todo/slice';
+import { selectFilter, selectTodos } from '../../redux/todo/todoSlice';
 import { TodoListItem } from '../TodoListItem/TodoListItem';
 import { getFilteredTodos } from '../../helpers/getFilteredTodos';
 

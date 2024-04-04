@@ -1,11 +1,12 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { AddTodoForm } from '../AddTodoForm/AddTodoForm';
-import { Filters } from '../Filters/Filters';
-import { NotificationLine } from '../NotificationLine/NotificationLine';
-import { TodoList } from '../TodoList/Todolist';
-import { selectTodos } from '../../redux/todo/slice';
+import { selectTodos } from '../redux/todo/todoSlice';
+import { NotificationLine } from './NotificationLine/NotificationLine';
+import { Filters } from './Filters/Filters';
+import { TodoList } from './TodoList/Todolist';
+import { AddTodoForm } from './AddTodoForm/AddTodoForm';
 
-export const TaskManager = () => {
+export const App = () => {
   const todos = useSelector(selectTodos);
 
   return (

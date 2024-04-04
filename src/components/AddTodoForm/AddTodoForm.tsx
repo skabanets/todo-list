@@ -1,22 +1,27 @@
+import React, { ChangeEvent, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, selectTodos } from '../../redux/todo/slice';
+import { addTodo, selectTodos } from '../../redux/todo/todoSlice';
 import { useState } from 'react';
 import { findTodo } from '../../helpers/findTodo';
 
 export const AddTodoForm = () => {
   const todos = useSelector(selectTodos);
-  const [textTodo, setTextTodo] = useState('');
+  const [textTodo, setTextTodo] = useState<string>('');
   const dispatch = useDispatch();
 
-  const handleChangeTodoText = e => {
+  const handleChangeTodoText = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setTextTodo(value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (findTodo(textTodo, todos)) return;
-    dispatch(addTodo({ text: textTodo.trim() }));
+
+    const trimmedText = textTodo.trim();
+    if (!trimmedText) return;
+
+    dispatch(addTodo(trimmedText));
     setTextTodo('');
   };
 

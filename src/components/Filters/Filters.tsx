@@ -1,5 +1,6 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeFilter, selectFilter } from '../../redux/todo/slice';
+import { changeFilter, selectFilter } from '../../redux/todo/todoSlice';
 
 export const Filters = () => {
   const dispatch = useDispatch();
